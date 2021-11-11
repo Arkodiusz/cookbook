@@ -1,7 +1,7 @@
 package com.app.cookbook.service;
 
 import com.app.cookbook.domain.Recipe;
-import com.app.cookbook.exception.RecipeNotFoundException;
+import com.app.cookbook.exception.ResourceNotFoundException;
 import com.app.cookbook.repository.RecipeRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ public class RecipeService {
 
     public Recipe findRecipeById(Long id) {
         return recipeRepository.findById(id)
-                .orElseThrow(() -> new RecipeNotFoundException("Recipe with id " + id + " not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Recipe with id " + id + " not found"));
     }
 
     public List<Recipe> findAllRecipes() {

@@ -4,7 +4,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -18,8 +17,6 @@ public class Recipe implements Serializable {
     private Long id;
     private String name;
     private String imageUrl;
-    @OneToMany
-    private List<Ingredient> ingredients;
     private String preparation;
     private Long portions;
 

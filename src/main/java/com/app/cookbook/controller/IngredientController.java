@@ -11,33 +11,27 @@ import java.util.List;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/ingredient")
 public class IngredientController {
 
     private final IngredientService ingredientService;
-    @GetMapping("/find/all")
-    public ResponseEntity<List<Ingredient>> findAllIngredients() {
-        return new ResponseEntity<>(ingredientService.findAllIngredients(), HttpStatus.OK);
+
+    @GetMapping("/recipes/{recipeId}/ingredients")
+    public ResponseEntity<List<Ingredient>> findAllIngredientsByRecipeId(@PathVariable("recipeId") Long recipeId) {
+        return new ResponseEntity<>(ingredientService.findAllIngredientsByRecipeId(recipeId), HttpStatus.OK);
     }
 
-    @GetMapping("/find/{id}")
-    public ResponseEntity<Ingredient> findIngredientById(@PathVariable("id") Long id) {
-        return new ResponseEntity<>(ingredientService.findIngredientById(id), HttpStatus.OK);
+    @PostMapping("/recipes/{recipeId}/ingredients")
+    public ResponseEntity<Ingredient> addIngredientToRecipe(@PathVariable("recipeId") Long recipeId, @RequestBody Ingredient ingredient) {
+        return new ResponseEntity<>(ingredientService.addIngredientToRecipe(recipeId, ingredient), HttpStatus.CREATED);
     }
 
-    @PostMapping("/add")
-    public ResponseEntity<Ingredient> addIngredient(@RequestBody Ingredient ingredient) {
-        return new ResponseEntity<>(ingredientService.addIngredient(ingredient), HttpStatus.CREATED);
+    @PutMapping("/recipes/{recipeId}/ingredients/{ingredientId}")
+    public ResponseEntity<Ingredient> updateIngredientInRecipe(@PathVariable("recipeId") Long recipeId, @PathVariable("ingredientId") Long ingredientId, @RequestBody Ingredient ingredient) {
+        return new ResponseEntity<>(ingredientService.updateIngredientInRecipe(recipeId, ingredientId, ingredient), HttpStatus.OK);
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<Ingredient> updateIngredient(@RequestBody Ingredient ingredient) {
-        return new ResponseEntity<>(ingredientService.updateIngredient(ingredient), HttpStatus.OK);
-    }
-
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteIngredientById(@PathVariable("id") Long id) {
-        ingredientService.deleteIngredient(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+    @DeleteMapping("/recipes/{recipeId}/ingredients/{ingredientId}")
+    public ResponseEntity<?> deleteIngredientById(@PathVariable("recipeId") Long recipeId, @PathVariable("ingredientId") Long ingredientId) {
+        return ingredientService.deleteIngredientById(recipeId, ingredientId);
     }
 }
