@@ -17,8 +17,6 @@ public class Ingredient implements Serializable {
     @Column(nullable = false, updatable = false)
     private Long id;
     private String name;
-    @ManyToOne
-    private Recipe recipe;
     private Double quantity;
     private Unit unit;
 }
