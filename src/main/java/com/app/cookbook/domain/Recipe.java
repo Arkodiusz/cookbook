@@ -19,12 +19,12 @@ public class Recipe implements Serializable {
     private String name;
     private String imageUrl;
     @OneToMany
-    private List<Ingredient> ingredientList;
+    private List<Ingredient> ingredients;
     private String preparation;
     private Long portions;
 
     @Override
     public String toString() {
-        return "<<" + id + ", " + name + ", " + portions + ">>";
+        return "<<" + id + ", " + name + ", " + portions + ", " + preparation + ">>";
     }
 }

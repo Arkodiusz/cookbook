@@ -1,6 +1,5 @@
 package com.app.cookbook.domain;
 
-import com.app.cookbook.unit.Unit;
 import lombok.*;
 
 import javax.persistence.*;
@@ -18,6 +17,8 @@ public class Ingredient implements Serializable {
     @Column(nullable = false, updatable = false)
     private Long id;
     private String name;
+    @ManyToOne
+    private Recipe recipe;
     private Double quantity;
     private Unit unit;
 }
