@@ -20,8 +20,4 @@ public class Recipe implements Serializable {
     private String preparation;
     private Long portions;
 
-    @Override
-    public String toString() {
-        return "<<" + id + ", " + name + ", " + portions + ", " + preparation + ">>";
-    }
 }

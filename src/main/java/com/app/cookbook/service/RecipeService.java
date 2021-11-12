@@ -32,6 +32,9 @@ public class RecipeService {
     }
 
     public void deleteRecipeById(Long id) {
+        if(!recipeRepository.existsById(id)) {
+            throw new ResourceNotFoundException("Recipe with id " + id + " not found");
+        }
         recipeRepository.deleteById(id);
     }
 }
