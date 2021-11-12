@@ -41,10 +41,11 @@ public class IngredientService {
         }).orElseThrow(() -> new ResourceNotFoundException("Ingredient with id " + ingredientId + " not found"));
     }
 
-    public ResponseEntity<?> deleteIngredientById(Long recipeId, Long ingredientId) {
+    public ResponseEntity<?> deleteIngredientByRecipeIdAndIngredientId(Long recipeId, Long ingredientId) {
         return ingredientRepository.findByIdAndRecipeId(ingredientId, recipeId).map(ingredient -> {
             ingredientRepository.delete(ingredient);
             return new ResponseEntity<>(HttpStatus.OK);
         }).orElseThrow(() -> new ResourceNotFoundException("Ingredient with id " + ingredientId + " and recipeId " + recipeId + " not found"));
     }
 }
+

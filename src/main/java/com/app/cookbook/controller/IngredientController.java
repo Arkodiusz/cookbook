@@ -32,6 +32,6 @@ public class IngredientController {
 
     @DeleteMapping("/recipes/{recipeId}/ingredients/{ingredientId}")
     public ResponseEntity<?> deleteIngredientById(@PathVariable("recipeId") Long recipeId, @PathVariable("ingredientId") Long ingredientId) {
-        return ingredientService.deleteIngredientById(recipeId, ingredientId);
+        return ingredientService.deleteIngredientByRecipeIdAndIngredientId(recipeId, ingredientId);
     }
 }
