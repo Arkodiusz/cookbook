@@ -17,6 +17,7 @@ public class Recipe implements Serializable {
     private Long id;
     private String name;
     private String imageUrl;
+    @Lob
     private String preparation;
     private Long portions;
 
