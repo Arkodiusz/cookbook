@@ -11,7 +11,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @RestController
-@CrossOrigin
+@CrossOrigin("*")
 public class IngredientController {
 
     private final IngredientService ingredientService;
