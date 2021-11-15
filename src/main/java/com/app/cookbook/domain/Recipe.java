@@ -17,8 +17,7 @@ public class Recipe implements Serializable {
     private Long id;
     private String name;
     private String imageUrl;
-    @Lob
-    @Column(name = "preparation", columnDefinition="CLOB")
+    @Column(name = "preparation", length = 4000)
     private String preparation;
     private Long portions;
 
