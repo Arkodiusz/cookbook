@@ -16,6 +16,11 @@ public class IngredientController {
 
     private final IngredientService ingredientService;
 
+    @GetMapping("/recipes/{recipeId}/ingredients/{ingredientId}")
+    public ResponseEntity<Ingredient> findIngredientByRecipeIdAndIngredientId(@PathVariable("recipeId") Long recipeId, @PathVariable("ingredientId") Long ingredientId) {
+        return new ResponseEntity<>(ingredientService.findIngredientByRecipeIdAndIngredientId(recipeId, ingredientId), HttpStatus.OK);
+    }
+
     @GetMapping("/recipes/{recipeId}/ingredients")
     public ResponseEntity<List<Ingredient>> findAllIngredientsByRecipeId(@PathVariable("recipeId") Long recipeId) {
         return new ResponseEntity<>(ingredientService.findAllIngredientsByRecipeId(recipeId), HttpStatus.OK);

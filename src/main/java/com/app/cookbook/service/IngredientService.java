@@ -22,6 +22,11 @@ public class IngredientService {
         return ingredientRepository.findByRecipeId(recipeId);
     }
 
+    public Ingredient findIngredientByRecipeIdAndIngredientId(Long recipeId, Long ingredientId) {
+        return ingredientRepository.findByIdAndRecipeId(ingredientId, recipeId)
+                .orElseThrow(() -> new ResourceNotFoundException("Ingredient with id " + ingredientId + " and recipeId " + recipeId + " not found"));
+    }
+
     public Ingredient addIngredientToRecipe(Long recipeId, Ingredient ingredient) {
         return recipeRepository.findById(recipeId).map(recipe -> {
             ingredient.setRecipe(recipe);
