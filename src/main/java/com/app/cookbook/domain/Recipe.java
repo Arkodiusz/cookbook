@@ -20,5 +20,6 @@ public class Recipe implements Serializable {
     @Column(name = "preparation", length = 4000)
     private String preparation;
     private Long portions;
+    private String time;
 
 }
