@@ -87,7 +87,7 @@ class IngredientServiceTest {
         Ingredient newIngredient = savedIngredient;
         newIngredient.setName("updated ingredient 2");
         newIngredient.setQuantity(20.0);
-        newIngredient.setUnit(Unit.SPOON);
+        newIngredient.setUnit(Unit.TABLESPOON);
         ingredientService.updateIngredientInRecipe(savedRecipe.getId(), savedIngredient.getId(), newIngredient);
 
         //Then
