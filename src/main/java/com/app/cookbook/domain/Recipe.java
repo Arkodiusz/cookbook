@@ -21,5 +21,6 @@ public class Recipe implements Serializable {
     private String preparation;
     private Long portions;
     private String time;
+    private Boolean isDefault;
 
 }
