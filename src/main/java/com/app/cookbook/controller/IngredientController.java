@@ -31,6 +31,11 @@ public class IngredientController {
         return new ResponseEntity<>(ingredientService.addIngredientToRecipe(recipeId, ingredient), HttpStatus.CREATED);
     }
 
+    @PostMapping("/recipes/{recipeId}/ingredients/list")
+    public ResponseEntity<List<Ingredient>> addIngredientsToRecipe(@PathVariable("recipeId") Long recipeId, @RequestBody List<Ingredient> ingredients) {
+        return new ResponseEntity<>(ingredientService.addIngredientsToRecipe(recipeId, ingredients), HttpStatus.CREATED);
+    }
+
     @PutMapping("/recipes/{recipeId}/ingredients/{ingredientId}")
     public ResponseEntity<Ingredient> updateIngredientInRecipe(@PathVariable("recipeId") Long recipeId, @PathVariable("ingredientId") Long ingredientId, @RequestBody Ingredient ingredient) {
         return new ResponseEntity<>(ingredientService.updateIngredientInRecipe(recipeId, ingredientId, ingredient), HttpStatus.OK);

@@ -34,6 +34,15 @@ public class IngredientService {
         }).orElseThrow(() -> new ResourceNotFoundException("Recipe with id " + recipeId + " not found"));
     }
 
+    public List<Ingredient> addIngredientsToRecipe(Long recipeId, List<Ingredient> ingredients) {
+        return recipeRepository.findById(recipeId).map(recipe -> {
+            for (Ingredient ingredient : ingredients) {
+                ingredient.setRecipe(recipe);
+            }
+            return ingredientRepository.saveAll(ingredients);
+        }).orElseThrow(() -> new ResourceNotFoundException("Recipe with id " + recipeId + " not found"));
+    }
+
     public Ingredient updateIngredientInRecipe(Long recipeId, Long ingredientId, Ingredient ingredientRequest) {
         if(!recipeRepository.existsById(recipeId)) {
             throw new ResourceNotFoundException("Recipe with id " + recipeId + " not found");

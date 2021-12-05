@@ -71,6 +71,28 @@ class IngredientServiceTest {
     }
 
     @Test
+    void addIngredientsToRecipe() {
+        //Given
+        Recipe recipe1 = new Recipe();
+        recipe1.setName("recipe 1");
+        Ingredient ingredient1 = new Ingredient();
+        ingredient1.setName("ingredient 1");
+        Ingredient ingredient2 = new Ingredient();
+        ingredient2.setName("ingredient 2");
+        Ingredient ingredient3 = new Ingredient();
+        ingredient2.setName("ingredient 3");
+
+        List<Ingredient> ingredients = List.of(ingredient1, ingredient2, ingredient3);
+
+        //When
+        Recipe savedRecipe = recipeRepository.save(recipe1);
+        ingredientService.addIngredientsToRecipe(savedRecipe.getId(), ingredients);
+
+        //Then
+        assertTrue(ingredientRepository.findByRecipeId(savedRecipe.getId()).containsAll(List.of(ingredient1, ingredient2, ingredient3)));
+    }
+
+    @Test
     void updateIngredientInRecipe() {
         //Given
         Recipe recipe1 = new Recipe();
