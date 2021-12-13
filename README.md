@@ -2,7 +2,7 @@
 
 ## About The Project
 
-Recipe database that stores two types of data: \
+Recipe database that stores two types of data:
 * Recipe - preparation description and basic info (name, portions, prep time, preview image link)
 * Ingredient - name, quantity and unit of necessary ingredient
 
@@ -78,7 +78,7 @@ Delete ingredient
 ###### PATH VARIABLES
 Long recipeId, Long ingredientId (primary keys)
 
-##Links:
+## Links:
 * [Project GUI](https://arkodiusz.github.io/cookbook_ui/?#)
 * [Project repo](https://github.com/Arkodiusz/cookbook)
 * [My portfolio](https://arkodiusz.github.io)
